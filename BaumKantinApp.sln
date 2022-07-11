@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaumKantin.Core", "BaumKantin.Core\BaumKantin.Core.csproj", "{707FE4B5-8204-4DEB-A314-5D763B1C2A4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaumKantin.Repository", "BaumKantin.Repository\BaumKantin.Repository.csproj", "{2EB88D1C-AE32-404A-960F-0B8E2C1A7770}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaumKantin.Service", "BaumKantin.Service\BaumKantin.Service.csproj", "{297DAA92-19E7-42CF-BD9A-6BF9B97DAB81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaumKantin.API", "BaumKantin.API\BaumKantin.API.csproj", "{E866D285-2B51-4AC5-ADDB-B6A9CFC04AFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaumKantin.Web", "BaumKantin.Web\BaumKantin.Web.csproj", "{56AE3E2D-FD8C-438B-BD0E-32A632FC3111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaumKantin.Caching", "BaumKantin.Caching\BaumKantin.Caching.csproj", "{E8FE31AA-46BC-4A87-8F61-F54F2EBE86C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{707FE4B5-8204-4DEB-A314-5D763B1C2A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707FE4B5-8204-4DEB-A314-5D763B1C2A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707FE4B5-8204-4DEB-A314-5D763B1C2A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707FE4B5-8204-4DEB-A314-5D763B1C2A4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB88D1C-AE32-404A-960F-0B8E2C1A7770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB88D1C-AE32-404A-960F-0B8E2C1A7770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB88D1C-AE32-404A-960F-0B8E2C1A7770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB88D1C-AE32-404A-960F-0B8E2C1A7770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297DAA92-19E7-42CF-BD9A-6BF9B97DAB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297DAA92-19E7-42CF-BD9A-6BF9B97DAB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297DAA92-19E7-42CF-BD9A-6BF9B97DAB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297DAA92-19E7-42CF-BD9A-6BF9B97DAB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E866D285-2B51-4AC5-ADDB-B6A9CFC04AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E866D285-2B51-4AC5-ADDB-B6A9CFC04AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E866D285-2B51-4AC5-ADDB-B6A9CFC04AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E866D285-2B51-4AC5-ADDB-B6A9CFC04AFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AE3E2D-FD8C-438B-BD0E-32A632FC3111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AE3E2D-FD8C-438B-BD0E-32A632FC3111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AE3E2D-FD8C-438B-BD0E-32A632FC3111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AE3E2D-FD8C-438B-BD0E-32A632FC3111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8FE31AA-46BC-4A87-8F61-F54F2EBE86C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8FE31AA-46BC-4A87-8F61-F54F2EBE86C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8FE31AA-46BC-4A87-8F61-F54F2EBE86C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8FE31AA-46BC-4A87-8F61-F54F2EBE86C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0738D641-5BCC-4A77-BE25-8F333FC235E8}
+	EndGlobalSection
+EndGlobal

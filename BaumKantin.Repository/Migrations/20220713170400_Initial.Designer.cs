@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BaumKantin.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220709191627_Initial")]
+    [Migration("20220713170400_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,9 +32,6 @@ namespace BaumKantin.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("IdentityId")
                         .HasColumnType("int");
 
@@ -44,22 +41,12 @@ namespace BaumKantin.Repository.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Customers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreateDate = new DateTime(2022, 7, 9, 22, 16, 27, 581, DateTimeKind.Local).AddTicks(5739),
-                            Name = "Sanem",
-                            Phone = "0998877",
-                            UpdateDate = new DateTime(2022, 7, 9, 22, 16, 27, 581, DateTimeKind.Local).AddTicks(5750)
-                        });
                 });
 
             modelBuilder.Entity("BaumKantin.Core.Room", b =>
@@ -70,9 +57,6 @@ namespace BaumKantin.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Floor")
                         .HasColumnType("nvarchar(max)");
 
@@ -80,9 +64,6 @@ namespace BaumKantin.Repository.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -92,10 +73,8 @@ namespace BaumKantin.Repository.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2022, 7, 9, 22, 16, 27, 581, DateTimeKind.Local).AddTicks(5918),
                             Floor = "1",
-                            Number = "206",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Number = "206"
                         });
                 });
 
@@ -104,12 +83,12 @@ namespace BaumKantin.Repository.Migrations
                     b.Property<int>("CustomersId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomsId")
+                    b.Property<int>("roomsId")
                         .HasColumnType("int");
 
-                    b.HasKey("CustomersId", "RoomsId");
+                    b.HasKey("CustomersId", "roomsId");
 
-                    b.HasIndex("RoomsId");
+                    b.HasIndex("roomsId");
 
                     b.ToTable("CustomerRoom");
                 });
@@ -124,7 +103,7 @@ namespace BaumKantin.Repository.Migrations
 
                     b.HasOne("BaumKantin.Core.Room", null)
                         .WithMany()
-                        .HasForeignKey("RoomsId")
+                        .HasForeignKey("roomsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

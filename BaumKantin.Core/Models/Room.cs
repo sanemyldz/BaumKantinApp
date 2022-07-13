@@ -4,6 +4,6 @@
     {
         public string? Number { get; set; }
         public string? Floor { get; set; }
-        public List<Customer>? Customers { get; set; }
+        public ICollection<Customer>? Customers { get; set; }
     }
 }

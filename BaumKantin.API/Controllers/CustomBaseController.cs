@@ -1,5 +1,4 @@
 ﻿using BaumKantin.Core.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BaumKantin.API.Controllers

@@ -1,3 +1,5 @@
+using BaumKantin.Core.Repositories;
+using BaumKantin.Core.Services;
 using BaumKantin.Core.UnitOfWorks;
 using BaumKantin.Repository;
 using BaumKantin.Repository.Repositories;
@@ -18,6 +20,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IService<>),typeof(Service<>));
+builder.Services.AddScoped<ICustomerRepository,CustomerRepository>();
+builder.Services.AddScoped<ICustomerService,CustomerService>();
+builder.Services.AddScoped<IRoomRepository,RoomRepository>();
+builder.Services.AddScoped<IRoomService,RoomService>();
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
 builder.Services.AddDbContext<DataContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DbConnect")));

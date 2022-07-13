@@ -13,7 +13,7 @@ namespace BaumKantin.Core.DTOs
     {
         public T Data { get; set; }
 
-        [JsonIgnore]//StatusCode doesn't returning on Client requests.
+        [JsonIgnore]//StatusCode will not return with request.
         public int StatusCode { get; set; }
 
         public List<String>? Errors { get; set; }

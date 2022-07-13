@@ -6,7 +6,7 @@ namespace BaumKantin.Repository.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly DataContext _dataContext;
-        private readonly DbSet<T> _dbSet;
+        protected readonly DbSet<T> _dbSet;
 
         public GenericRepository(DataContext DataContext)
         {

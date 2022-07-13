@@ -1,4 +1,6 @@
 ﻿
+using BaumKantin.Core.DTOs;
+
 namespace BaumKantin.Core
 {
     public enum UserType:Byte
@@ -12,7 +14,8 @@ namespace BaumKantin.Core
         public int? IdentityId { get; set; }
         public UserType UserTypeEnum;
         public string? Name { get; set; }
+        public string? Surname { get; set; }
         public string? Phone { get; set; }
-        public List<Room>? Rooms { get; set; }
+        public ICollection<Room>? rooms { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace BaumKantin.Core.DTOs
     {
         public string? Number { get; set; }
         public string? Floor { get; set; }
+        public ICollection<CustomerDTO>? customerDTOs { get; set; }
     }
 }

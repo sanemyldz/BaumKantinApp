@@ -20,7 +20,6 @@ namespace BaumKantin.API.Controllers
             _mapper = mapper;
         }
 
-
         [HttpGet("[action]")]
         public async Task<IActionResult> GetCustomerRooms(int id)
         {
@@ -36,11 +35,11 @@ namespace BaumKantin.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(CustomerDTO customerDTO)
+        public async Task<IActionResult> AddAsync(CustomerRoomsDTO customerDTO)
         {
             var customer = await _customerservice.AddAsync(_mapper.Map<Customer>(customerDTO));
-            var _customerDTO = _mapper.Map<CustomerDTO>(customer);
-            return CreateActionResult(CustomResponseDTO<CustomerDTO>.Success(200, _customerDTO));
+            var _customerDTO = _mapper.Map<CustomerRoomsDTO>(customer);
+            return CreateActionResult(CustomResponseDTO<CustomerRoomsDTO>.Success(200, _customerDTO));
         }
 
         [HttpGet("[action]")]

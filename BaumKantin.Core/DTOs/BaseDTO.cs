@@ -9,7 +9,8 @@ namespace BaumKantin.Core.DTOs
     public class BaseDTO
     {
         public int Id { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        //TODO
+        //public DateTime CreateDate { get; set; }
+        //public DateTime? UpdateDate { get; set; }
     }
 }

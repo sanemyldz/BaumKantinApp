@@ -23,8 +23,8 @@ namespace BaumKantin.Service.Services
 
         public async Task<CustomResponseDTO<List<RoomDTO>>> GetCustomerRooms(int id)
         {
-            var room =await _customerRepository.GetCustomerRooms(id);
-            var roomDto= _mapper.Map<List <RoomDTO>>(room);
+            var rooms =await _customerRepository.GetCustomerRooms(id);
+            var roomDto= _mapper.Map<List <RoomDTO>>(rooms);
             return CustomResponseDTO<List<RoomDTO>>.Success(200,roomDto);
         }
     }

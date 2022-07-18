@@ -40,11 +40,11 @@ namespace BaumKantin.API.Controllers
             return CreateActionResult(CustomResponseDTO<RoomDTO>.Success(200, roomDto));
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> Add(RoomDTO roomDTO)
+        public async Task<IActionResult> Add(RoomCustomersDTO roomDTO)
         {
            var room = await _roomService.AddAsync(_mapper.Map<Room>(roomDTO));
-            var roomDto=_mapper.Map<RoomDTO>(room);
-            return CreateActionResult(CustomResponseDTO<RoomDTO>.Success(200,roomDto));
+            var roomDto=_mapper.Map<RoomCustomersDTO>(room);
+            return CreateActionResult(CustomResponseDTO<RoomCustomersDTO>.Success(200,roomDto));
         }
         [HttpPut("[action]")]
         public async Task<IActionResult> Update(RoomDTO roomDTO)

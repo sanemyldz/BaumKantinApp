@@ -7,11 +7,12 @@ namespace BaumKantin.Repository
 {
     public class DataContext:DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options):base(options)
-        {
-        }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Room> Rooms { get; set; }
+
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -10,8 +10,10 @@ namespace BaumKantin.Service.Mapping
         {
             CreateMap<Customer, CustomerDTO>().ReverseMap();
             CreateMap<Customer, CustomerRoomsDTO>().ReverseMap();
+            CreateMap<Customer, UpdateCustomerDTO>().ReverseMap();
             CreateMap<Room, RoomDTO>().ReverseMap();
             CreateMap<Room,RoomCustomersDTO>().ReverseMap();
+            CreateMap<Room,UpdateRoomDTO>().ReverseMap();
         }
     }
 }

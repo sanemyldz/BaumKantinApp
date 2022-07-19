@@ -1,16 +1,14 @@
 ﻿using BaumKantin.Core.DTOs;
-using BaumKantin.Core.Repositories;
-using BaumKantin.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BaumKantin.Core.Services
 {
-    public interface ICustomerService : IService<Customer>
+    public interface ICustomerService 
     {
-        Task<CustomResponseDTO<List<RoomDTO>>> GetCustomerRooms(int id);
+        Task<CustomResponseDTO<List<RoomDTO>>> GetCustomerRooms(int Id);
+        Task<CustomResponseDTO<List<CustomerRoomsDTO>>> GetDataAsync();
+        Task<CustomResponseDTO<CustomerDTO>> AddCustomer(CustomerDTO customerDTO);
+        Task<CustomResponseDTO<UpdateCustomerDTO>> UpdateCustomerAsync(UpdateCustomerDTO updateCustomerDTO);
+        Task<CustomResponseDTO<NoContentResponseDTO>> RemoveCustomerAsync(int Id);
+        Task<CustomResponseDTO<CustomerDTO>> GetByIdAsync(int Id);
     }
 }

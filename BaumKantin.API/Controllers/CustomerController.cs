@@ -13,62 +13,50 @@ namespace BaumKantin.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICustomerService _customerservice;
+        private readonly IRoomService _roomService;
 
-        public CustomerController(IMapper mapper, ICustomerService customerservice)
+        public CustomerController(IMapper mapper, ICustomerService customerservice, IRoomService roomService)
         {
             _customerservice = customerservice;
             _mapper = mapper;
+            _roomService = roomService;
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetCustomerRooms(int id)
+        public async Task<IActionResult> GetCustomerRooms(int Id)
         {
-            return CreateActionResult(await _customerservice.GetCustomerRooms(id));
+            return CreateActionResult(await _customerservice.GetCustomerRooms(Id));
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> GetAllCustomers()
         {
-            var customers = await _customerservice.GetAllAsync();
-            var customerDTOs = _mapper.Map<List<CustomerDTO>>(customers);
-            return CreateActionResult(CustomResponseDTO<List<CustomerDTO>>.Success(200, customerDTOs));
+            return CreateActionResult(await _customerservice.GetDataAsync());
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddAsync(CustomerRoomsDTO customerDTO)
+        public async Task<IActionResult> AddCustomer(CustomerDTO customerDTO)
         {
-            var customer = await _customerservice.AddAsync(_mapper.Map<Customer>(customerDTO));
-            var _customerDTO = _mapper.Map<CustomerRoomsDTO>(customer);
-            return CreateActionResult(CustomResponseDTO<CustomerRoomsDTO>.Success(200, _customerDTO));
+            return CreateActionResult(await _customerservice.AddCustomer(customerDTO));
+        }
+        
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetByIdAsync(int Id)
+        {
+            return CreateActionResult(await _customerservice.GetByIdAsync(Id));
         }
 
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetByIdAsync(int id)
-        {
-            var customer = await _customerservice.GetByIdAsync(id);
-            var customerDTO = _mapper.Map<CustomerDTO>(customer);
-            return CreateActionResult(CustomResponseDTO<CustomerDTO>.Success(200, customerDTO));
-        }
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateAsync(CustomerDTO customerDTO)
+        public async Task<IActionResult> UpdateAsync(UpdateCustomerDTO customerDTO)
         {
-            await _customerservice.UpdateAsync(_mapper.Map<Customer>(customerDTO));
-            //TODO
-            return CreateActionResult(CustomResponseDTO<NoContentResponseDTO>.Success(204));
+            return CreateActionResult(await _customerservice.UpdateCustomerAsync(customerDTO));
         }
 
         [HttpDelete("[action]")]
-        public async Task<IActionResult> RemoveAsync(int id)
+        public async Task<IActionResult> RemoveAsync(int Id)
         {
-            var customer = await _customerservice.GetByIdAsync(id);
-            if (customer == null)
-            {
-                return CreateActionResult(CustomResponseDTO<NoContentResponseDTO>.Fail(404,"Kullanıcı bulunamadı!"));
-            }
-            await _customerservice.RemoveAsync(customer);
-            return CreateActionResult(CustomResponseDTO<NoContentResponseDTO>.Success(204));
+            return CreateActionResult(await _customerservice.RemoveCustomerAsync(Id));
         }
-
     }
 }
 

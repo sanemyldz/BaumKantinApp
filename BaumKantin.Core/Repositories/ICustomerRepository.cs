@@ -1,14 +1,11 @@
-﻿using BaumKantin.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BaumKantin.Core.DTOs;
+using BaumKantin.Repository;
 
 namespace BaumKantin.Core.Repositories
 {
     public interface ICustomerRepository:IGenericRepository<Customer>
     {
         Task<List<Room>> GetCustomerRooms(int id);
+        Task<List<Customer>> GetDataAsync();
     }
 }

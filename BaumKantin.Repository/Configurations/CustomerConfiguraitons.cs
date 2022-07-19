@@ -8,6 +8,7 @@ namespace BaumKantin.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
+            //TODO
             //CONFIGURE NULLABLE AND REQUIRED PROPERTIES
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();

@@ -25,39 +25,35 @@ namespace BaumKantin.API.Controllers
         {
             return CreateActionResult(await _roomService.GetRoomCustomersAsync(roomId));
         }
+
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllRooms()
         {
-            var room = await _roomService.GetAllAsync();
-            var roomDto = _mapper.Map<List<RoomDTO>>(room);
-            return CreateActionResult(CustomResponseDTO<List<RoomDTO>>.Success(200, roomDto));
+            return CreateActionResult(await _roomService.GetDataAsync());
         }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> AddRoom(RoomDTO roomDTO)
+        {
+            return CreateActionResult(await _roomService.AddRoom(roomDTO));
+        }
+
         [HttpGet("[action]")]
         public async Task<IActionResult> GetById(int roomId)
         {
-            var room = await _roomService.GetByIdAsync(roomId);
-            var roomDto = _mapper.Map<RoomDTO>(room);
-            return CreateActionResult(CustomResponseDTO<RoomDTO>.Success(200, roomDto));
+            return CreateActionResult(await _roomService.GetByIdAsync(roomId));
         }
-        [HttpPost("[action]")]
-        public async Task<IActionResult> Add(RoomCustomersDTO roomDTO)
-        {
-           var room = await _roomService.AddAsync(_mapper.Map<Room>(roomDTO));
-            var roomDto=_mapper.Map<RoomCustomersDTO>(room);
-            return CreateActionResult(CustomResponseDTO<RoomCustomersDTO>.Success(200,roomDto));
-        }
+      
         [HttpPut("[action]")]
-        public async Task<IActionResult> Update(RoomDTO roomDTO)
+        public async Task<IActionResult> Update(UpdateRoomDTO roomDTO)
         {
-            await _roomService.UpdateAsync(_mapper.Map<Room>(roomDTO));
-            return CreateActionResult(CustomResponseDTO<NoContentResponseDTO>.Success(200));
+            return CreateActionResult(await _roomService.UpdateRoomAsync(roomDTO));
         }
+
         [HttpDelete("[action]")]
-        public async Task<IActionResult> Remove(int id)
-        {
-            var room=await _roomService.GetByIdAsync(id);
-            await _roomService.RemoveAsync(room);
-            return CreateActionResult(CustomResponseDTO<NoContentResponseDTO>.Success(200));
+        public async Task<IActionResult> Remove(int Id)
+        {            
+            return CreateActionResult(await _roomService.RemoveRoomAsync(Id));
         }
 
     }

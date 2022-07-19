@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaumKantin.Core.DTOs
 { 
-    public class CustomerDTO:BaseDTO
+    public class CustomerDTO
     {
         public int? IdentityId { get; set; }
         public UserType UserTypeEnum;

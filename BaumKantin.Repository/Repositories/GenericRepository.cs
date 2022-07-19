@@ -26,9 +26,10 @@ namespace BaumKantin.Repository.Repositories
         {
             return _dbSet.Where(expression);
         }
-        public async Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
+            return entity;
         }
         public void Remove(T entity)
         {

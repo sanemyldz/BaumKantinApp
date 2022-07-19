@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BaumKantin.Core.DTOs
 {
-    public class CustomerRoomsDTO:BaseDTO
+    public class UpdateCustomerDTO:BaseDTO
     {
+        public int? IdentityId { get; set; }
         public UserType UserTypeEnum;
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Phone { get; set; }
-        public ICollection<RoomDTO>? Rooms { get; set; }
     }
 }

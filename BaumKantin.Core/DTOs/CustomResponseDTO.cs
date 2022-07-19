@@ -9,7 +9,7 @@ namespace BaumKantin.Core.DTOs
 {
     //STATIC FACTORY METHOD
    
-    public class CustomResponseDTO<T>
+    public class CustomResponseDTO<T>:BaseDTO
     {
         public T Data { get; set; }
 

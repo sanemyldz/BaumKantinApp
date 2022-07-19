@@ -10,7 +10,7 @@ namespace BaumKantin.Repository
 
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
 
-        Task AddAsync(T entity);
+        Task<T> AddAsync(T entity);
  
         void Remove(T entity);
 

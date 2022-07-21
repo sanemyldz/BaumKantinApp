@@ -30,9 +30,9 @@ namespace BaumKantin.Service.Services
             return CustomResponseDTO<RoomDTO>.Success(200, roomDTO);
         }
 
-        public async Task<CustomResponseDTO<List<RoomCustomersDTO>>> GetDataAsync()
+        public async Task<CustomResponseDTO<List<RoomCustomersDTO>>> GetAllRooms()
         {
-            var room = await _roomRepository.GetDataAsync();
+            var room = await _roomRepository.GetAllRooms();
             var roomDto=_mapper.Map<List<RoomCustomersDTO>>(room);
             return CustomResponseDTO<List<RoomCustomersDTO>>.Success(200, roomDto);
         }
@@ -42,6 +42,20 @@ namespace BaumKantin.Service.Services
             var customers =await _roomRepository.GetRoomCustomersAsync(roomId);
             var customerDto= _mapper.Map<List<CustomerDTO>>(customers);
             return CustomResponseDTO<List<CustomerDTO>>.Success(200,customerDto);
+        }
+
+        public async Task<CustomResponseDTO<RoomDTO>> GetByIdAsync(int Id)
+        {
+            var room = await _genericRepository.GetByIdAsync(Id);
+            var roomDTO = _mapper.Map<RoomDTO>(room);
+            return CustomResponseDTO<RoomDTO>.Success(200, roomDTO);
+        }
+
+        public async Task<CustomResponseDTO<List<CustomerDTO>>> GetRoomCustomersByNumberAsync(string RoomNumber)
+        {
+            var customers = await _roomRepository.GetRoomCustomersByNumberAsync(RoomNumber.ToLower());
+            var customerDto = _mapper.Map<List<CustomerDTO>>(customers);
+            return CustomResponseDTO<List<CustomerDTO>>.Success(200, customerDto);
         }
 
         public async Task<CustomResponseDTO<NoContentResponseDTO>> RemoveRoomAsync(int Id)
@@ -59,11 +73,5 @@ namespace BaumKantin.Service.Services
             return CustomResponseDTO<UpdateRoomDTO>.Success(200, updateRoomDTO);
         }
 
-        public async Task<CustomResponseDTO<RoomDTO>> GetByIdAsync(int Id)
-        {
-            var room = await _genericRepository.GetByIdAsync(Id);
-            var roomDTO = _mapper.Map<RoomDTO>(room);
-            return CustomResponseDTO<RoomDTO>.Success(200, roomDTO);
-        }
     }
 }

@@ -5,7 +5,6 @@ namespace BaumKantin.Core.Repositories
 {
     public interface ICustomerRepository:IGenericRepository<Customer>
     {
-        Task<List<Room>> GetCustomerRooms(int id);
-        Task<List<Customer>> GetDataAsync();
+        Task<Room> GetCustomerRoom(int id);
     }
 }

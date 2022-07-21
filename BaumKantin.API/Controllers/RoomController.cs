@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using BaumKantin.Core;
 using BaumKantin.Core.DTOs;
 using BaumKantin.Core.Services;
-using BaumKantin.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BaumKantin.API.Controllers
@@ -29,7 +27,13 @@ namespace BaumKantin.API.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllRooms()
         {
-            return CreateActionResult(await _roomService.GetDataAsync());
+            return CreateActionResult(await _roomService.GetAllRooms());
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetRoomCustomersByNumberAsync(string RoomNumber)
+        {
+            return CreateActionResult(await _roomService.GetRoomCustomersByNumberAsync(RoomNumber));
         }
 
         [HttpPost("[action]")]

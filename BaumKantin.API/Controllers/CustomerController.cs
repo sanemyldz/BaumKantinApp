@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using BaumKantin.Core;
 using BaumKantin.Core.DTOs;
 using BaumKantin.Core.Services;
-using BaumKantin.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BaumKantin.API.Controllers
@@ -23,23 +21,23 @@ namespace BaumKantin.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetCustomerRooms(int Id)
+        public async Task<IActionResult> GetCustomerRoom(int Id)
         {
-            return CreateActionResult(await _customerservice.GetCustomerRooms(Id));
+            return CreateActionResult(await _customerservice.GetCustomerRoom(Id));
         }
 
         [HttpGet("[action]")]
         public async Task<IActionResult> GetAllCustomers()
         {
-            return CreateActionResult(await _customerservice.GetDataAsync());
+            return CreateActionResult(await _customerservice.GetAllCustomersAsync());
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddCustomer(CustomerDTO customerDTO)
+        public async Task<IActionResult> AddCustomer(CustomerRoomDTO customerRoomDTO)
         {
-            return CreateActionResult(await _customerservice.AddCustomer(customerDTO));
+            return CreateActionResult(await _customerservice.AddCustomer(customerRoomDTO));
         }
-        
+
         [HttpGet("[action]")]
         public async Task<IActionResult> GetByIdAsync(int Id)
         {

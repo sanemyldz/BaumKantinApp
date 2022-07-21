@@ -10,13 +10,14 @@ namespace BaumKantin.Service.Services
 {
     public class CustomerService : ICustomerService
     {
-       
+
         private readonly ICustomerRepository _customerRepository;
         private readonly IGenericRepository<Customer> _genericRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerService(ICustomerRepository customerRepository, IGenericRepository<Customer> genericRepository, IMapper mapper, IUnitOfWork unitOfWork)
+        public CustomerService(ICustomerRepository customerRepository, IGenericRepository<Customer> genericRepository,
+            IMapper mapper, IUnitOfWork unitOfWork, IRoomRepository roomRepository)
         {
             _customerRepository = customerRepository;
             _genericRepository = genericRepository;
@@ -24,29 +25,22 @@ namespace BaumKantin.Service.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CustomResponseDTO<CustomerDTO>> AddCustomer(CustomerDTO customerDTO)
+        public async Task<CustomResponseDTO<CustomerRoomDTO>> AddCustomer(CustomerRoomDTO customerDTO)
         {
             await _genericRepository.AddAsync(_mapper.Map<Customer>(customerDTO));
             await _unitOfWork.CommitAsync();
-            return CustomResponseDTO<CustomerDTO>.Success(200, customerDTO);
+            return CustomResponseDTO<CustomerRoomDTO>.Success(200, customerDTO);
         }
 
-        public async Task<CustomResponseDTO<List<RoomDTO>>> GetCustomerRooms(int Id)
+        public async Task<CustomResponseDTO<List<RoomDTO>>> GetCustomerRoom(int Id)
         {
-            var rooms =await _customerRepository.GetCustomerRooms(Id);
-            var roomDto= _mapper.Map<List <RoomDTO>>(rooms);
-            return CustomResponseDTO<List<RoomDTO>>.Success(200,roomDto);
-        }
-
-        public async Task<CustomResponseDTO<List<CustomerRoomsDTO>>> GetDataAsync()
-        {
-            var customer = await _customerRepository.GetDataAsync();
-            var customerDTO = _mapper.Map<List<CustomerRoomsDTO>>(customer);
-            return CustomResponseDTO<List<CustomerRoomsDTO>>.Success(200, customerDTO);
+            var rooms = await _customerRepository.GetCustomerRoom(Id);
+            var roomDto = _mapper.Map<List<RoomDTO>>(rooms);
+            return CustomResponseDTO<List<RoomDTO>>.Success(200, roomDto);
         }
 
         public async Task<CustomResponseDTO<NoContentResponseDTO>> RemoveCustomerAsync(int Id)
-        {           
+        {
             var customer = await _genericRepository.GetByIdAsync(Id);
             _genericRepository.Remove(customer);
             await _unitOfWork.CommitAsync();
@@ -62,9 +56,16 @@ namespace BaumKantin.Service.Services
 
         public async Task<CustomResponseDTO<CustomerDTO>> GetByIdAsync(int Id)
         {
-            var customer= await _genericRepository.GetByIdAsync(Id);
+            var customer = await _genericRepository.GetByIdAsync(Id);
             var customerDTO = _mapper.Map<CustomerDTO>(customer);
             return CustomResponseDTO<CustomerDTO>.Success(200, customerDTO);
         }
+
+        public async Task<CustomResponseDTO<List<CustomerRoomDTO>>> GetAllCustomersAsync()
+        {        
+            var customerRoomDTO=_mapper.Map<List<CustomerRoomDTO>>(_customerRepository.GetAll());
+            return CustomResponseDTO<List<CustomerRoomDTO>>.Success(200, customerRoomDTO);
+        }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BaumKantin.Core.DTOs
 {
-    public class UpdateCustomerDTO:BaseDTO
+    public class CustomerRoomDTO
     {
         public UserType UserTypeEnum { get; set; }
         public string? Name { get; set; }

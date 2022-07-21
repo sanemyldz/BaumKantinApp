@@ -39,10 +39,18 @@ namespace BaumKantin.Repository.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte>("UserTypeEnum")
+                        .HasColumnType("tinyint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("Customers", (string)null);
                 });
@@ -66,44 +74,20 @@ namespace BaumKantin.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Rooms", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Floor = "1",
-                            Number = "206"
-                        });
                 });
 
-            modelBuilder.Entity("CustomerRoom", b =>
+            modelBuilder.Entity("BaumKantin.Core.Customer", b =>
                 {
-                    b.Property<int>("CustomersId")
-                        .HasColumnType("int");
+                    b.HasOne("BaumKantin.Core.Room", "Room")
+                        .WithMany("Customers")
+                        .HasForeignKey("RoomId");
 
-                    b.Property<int>("roomsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CustomersId", "roomsId");
-
-                    b.HasIndex("roomsId");
-
-                    b.ToTable("CustomerRoom");
+                    b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("CustomerRoom", b =>
+            modelBuilder.Entity("BaumKantin.Core.Room", b =>
                 {
-                    b.HasOne("BaumKantin.Core.Customer", null)
-                        .WithMany()
-                        .HasForeignKey("CustomersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BaumKantin.Core.Room", null)
-                        .WithMany()
-                        .HasForeignKey("roomsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,15 +10,21 @@ namespace BaumKantin.Repository.Repositories
         {
         }
 
-        public async Task<List<Room>> GetDataAsync()
+        public async Task<List<Room>> GetAllRooms()
         {
-            var data = await _dataContext.Rooms.Include(x => x.Customers).ToListAsync();
+            var data = await _dataContext.Rooms.Include(x=>x.Customers).ToListAsync();
             return data;
         }
 
         public async Task<List<Customer>> GetRoomCustomersAsync(int roomId)
         {
-            var room = await _dbSet.Include(x=>x.Customers).FirstOrDefaultAsync(x => x.Id == roomId);
+            var room = await _dbSet.Include(x=>x.Customers).SingleOrDefaultAsync(x=>x.Id==roomId);
+            return room.Customers.ToList();
+        }
+
+        public async Task<List<Customer>> GetRoomCustomersByNumberAsync(string RoomNumber)
+        {
+            var room = await _dbSet.Include(x => x.Customers).FirstOrDefaultAsync(x => x.Number.ToLower() == RoomNumber.ToLower());
             return room.Customers.ToList();
         }
     }

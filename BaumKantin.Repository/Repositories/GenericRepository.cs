@@ -1,19 +1,19 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BaumKantin.Repository.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly DataContext _dataContext;
-        protected readonly DbSet<T> _dbSet;
+        public readonly DataContext _dataContext;
+        public readonly DbSet<T> _dbSet;
 
         public GenericRepository(DataContext DataContext)
         {
             _dataContext = DataContext;
             _dbSet = DataContext.Set<T>();
-
         }
+
         public IQueryable<T> GetAll()
         {
             return _dbSet.AsNoTracking().AsQueryable();

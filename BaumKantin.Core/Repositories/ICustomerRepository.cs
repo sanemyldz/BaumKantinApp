@@ -1,5 +1,4 @@
-﻿using BaumKantin.Core.DTOs;
-using BaumKantin.Repository;
+﻿using BaumKantin.Repository;
 
 namespace BaumKantin.Core.Repositories
 {

@@ -14,6 +14,7 @@ namespace BaumKantin.Repository.Repositories
             _dbSet = DataContext.Set<T>();
         }
 
+
         public IQueryable<T> GetAll()
         {
             return _dbSet.AsNoTracking().AsQueryable();

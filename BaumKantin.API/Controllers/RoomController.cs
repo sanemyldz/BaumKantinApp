@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BaumKantin.Core.DTOs;
+﻿using BaumKantin.Core.DTOs;
 using BaumKantin.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,12 +9,10 @@ namespace BaumKantin.API.Controllers
     public class RoomController : CustomBaseController
     {
         private readonly IRoomService _roomService;
-        private readonly IMapper _mapper;
 
-        public RoomController(IRoomService roomService, IMapper mapper)
+        public RoomController(IRoomService roomService)
         {
             _roomService = roomService;
-            _mapper = mapper;
         }
 
         [HttpGet("[action]")]

@@ -8,9 +8,7 @@ namespace BaumKantin.Repository.Seeds
     {
         public void Configure(EntityTypeBuilder<Room> builder)
         {
-            //builder.HasData(
-            //    new Room { Id = 1, Floor = "1", Number = "206"
-            //    });
+            //TODO           
         }
     }
 }

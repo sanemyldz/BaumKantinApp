@@ -2,7 +2,7 @@
 {
     public class UpdateRoomDTO:BaseDTO
     {
-        public string? Number { get; set; }
-        public string? Floor { get; set; }
+        public string Number { get; set; }
+        public string Floor { get; set; }
     }
 }

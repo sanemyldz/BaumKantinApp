@@ -1,9 +1,15 @@
-﻿namespace BaumKantin.Core
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BaumKantin.Core
 {
     public class Room:BaseEntity
     {
-        public string? Number { get; set; }
-        public string? Floor { get; set; }
+        [Required]
+        public string Number { get; set; }
+        
+        [Required]
+        public string Floor { get; set; }
+
         public virtual ICollection<Customer>? Customers { get; set; }
     }
 }

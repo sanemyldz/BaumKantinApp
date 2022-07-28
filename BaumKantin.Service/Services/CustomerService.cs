@@ -17,7 +17,7 @@ namespace BaumKantin.Service.Services
         private readonly IUnitOfWork _unitOfWork;
 
         public CustomerService(ICustomerRepository customerRepository, IGenericRepository<Customer> genericRepository,
-            IMapper mapper, IUnitOfWork unitOfWork, IRoomRepository roomRepository)
+            IMapper mapper, IUnitOfWork unitOfWork)
         {
             _customerRepository = customerRepository;
             _genericRepository = genericRepository;
@@ -32,11 +32,11 @@ namespace BaumKantin.Service.Services
             return CustomResponseDTO<CustomerRoomDTO>.Success(200, customerDTO);
         }
 
-        public async Task<CustomResponseDTO<List<RoomDTO>>> GetCustomerRoom(int Id)
+        public async Task<CustomResponseDTO<RoomDTO>> GetCustomerRoom(int Id)
         {
-            var rooms = await _customerRepository.GetCustomerRoom(Id);
-            var roomDto = _mapper.Map<List<RoomDTO>>(rooms);
-            return CustomResponseDTO<List<RoomDTO>>.Success(200, roomDto);
+            var room = await _customerRepository.GetCustomerRoom(Id);
+            var roomDto = _mapper.Map<RoomDTO>(room);
+            return CustomResponseDTO<RoomDTO>.Success(200, roomDto);
         }
 
         public async Task<CustomResponseDTO<NoContentResponseDTO>> RemoveCustomerAsync(int Id)
